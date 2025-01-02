@@ -15,6 +15,6 @@ spec:
     spec:
       containers:
         - name: train
-          image: abhay45/trainbook:1
+          image: abhay45/trainbook:3
           ports:
             - containerPort: 8080
