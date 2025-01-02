@@ -1,0 +1,14 @@
+inputSet:
+  name: Build_Train_Ticket_Reservation_System_1735810264399-push-trigger-input-set
+  identifier: Build_Train_Ticket_Reservation_System_1735810264399pushtriggerinputset
+  orgIdentifier: default
+  projectIdentifier: TrainBookApp
+  pipeline:
+    identifier: Build_Train_Ticket_Reservation_System_1735810264399
+    properties:
+      ci:
+        codebase:
+          build:
+            type: branch
+            spec:
+              branch: <+trigger.branch>
