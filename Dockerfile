@@ -4,21 +4,21 @@ FROM maven:3.8-openjdk-11 AS builder
 # Set the working directory for the build
 WORKDIR /app
 
-# Copy the pom.xml and source code into the container
+# Copy dependencies and source code
 COPY pom.xml .
 COPY src ./src
 
 # Build the WAR file
-RUN mvn clean package -DskipTests
+RUN mvn -B -DskipTests clean package
 
-# Use official Tomcat image as the base for running the application
+# Use official Tomcat image for runtime
 FROM tomcat:9.0-jdk11-openjdk
 
-# Copy the WAR file from the builder image to Tomcat's webapps directory
-COPY --from=builder /app/target/TrainBook-1.0.0-SNAPSHOT.war /usr/local/tomcat/webapps/
+# Copy the WAR file to Tomcat's webapps directory
+COPY --from=builder /app/target/TrainBook-1.0.0-SNAPSHOT.war /usr/local/tomcat/webapps/ROOT.war
 
-# Expose the port that Tomcat runs on
+# Expose the Tomcat port
 EXPOSE 8080
 
-# Start Tomcat when the container starts
+# Start Tomcat
 CMD ["catalina.sh", "run"]
