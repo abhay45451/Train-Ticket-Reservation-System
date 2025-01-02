@@ -1,0 +1,13 @@
+infrastructureDefinition:
+  name: infra
+  identifier: infra
+  orgIdentifier: default
+  projectIdentifier: TrainBookApp
+  environmentRef: abhayenv
+  deploymentType: Kubernetes
+  type: KubernetesDirect
+  spec:
+    connectorRef: k8sconnector
+    namespace: default
+    releaseName: release-<+INFRA_KEY_SHORT_ID>
+  allowSimultaneousDeployments: false
