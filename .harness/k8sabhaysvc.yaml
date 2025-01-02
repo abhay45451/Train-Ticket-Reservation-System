@@ -3,3 +3,23 @@ service:
   identifier: k8sabhaysvc
   orgIdentifier: default
   projectIdentifier: TrainBookApp
+  serviceDefinition:
+    spec:
+      manifests:
+        - manifest:
+            identifier: k8s
+            type: K8sManifest
+            spec:
+              store:
+                type: Github
+                spec:
+                  connectorRef: Github
+                  gitFetchType: Branch
+                  paths:
+                    - k8s/deployment.yaml
+                    - k8s/service.yaml
+                  repoName: Train-Ticket-Reservation-System
+                  branch: master
+              skipResourceVersioning: false
+              enableDeclarativeRollback: false
+    type: Kubernetes
