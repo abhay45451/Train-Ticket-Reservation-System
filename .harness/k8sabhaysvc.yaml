@@ -1,0 +1,5 @@
+service:
+  name: k8sabhaysvc
+  identifier: k8sabhaysvc
+  orgIdentifier: default
+  projectIdentifier: TrainBookApp
